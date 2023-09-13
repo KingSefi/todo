@@ -1,0 +1,30 @@
+<div class="container">
+    <mat-card class="content">
+      <mat-card-header>
+        <mat-card-title>To do</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="input-container">
+          <div>
+            <mat-form-field class="mr-10">
+              <input matInput [(ngModel)]="message">
+            </mat-form-field>
+          </div>
+          <button mat-raised-button color="primary" (click)="addTodo()">
+            Ajouter
+          </button>
+        </div>
+        <ul>
+          <li *ngFor="let todo of todos$ | async">
+            <span>{{ todo.todo }} ({{ todo.completed ? 'Fait' : 'A faire' }})</span>
+            <button mat-raised-button color="primary" (click)="updateTodo(todo)">
+              {{!todo.completed ? 'Fait' : 'A faire'}}
+            </button>
+            <button mat-raised-button color="warn" (click)="deleteTodo(todo)">
+              Supprimer
+            </button>
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
